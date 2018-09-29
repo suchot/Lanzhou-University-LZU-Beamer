@@ -1,0 +1,11 @@
+del Lanzhou_test.aux
+del Lanzhou_test.bbl
+del Lanzhou_test.blg
+del Lanzhou_test.log
+del Lanzhou_test.nav
+del Lanzhou_test.out
+del Lanzhou_test.run.xml
+del Lanzhou_test.snm
+del Lanzhou_test.synctex.*
+del Lanzhou_test.toc
+del Lanzhou_test-blx.bib

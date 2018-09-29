@@ -1,0 +1,240 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Based on Tsinghuabeamer(https://github.com/tl3shi/THUBeamer)
+% Any question, pls feel free contact me anytime(bhu13@lzu.edu.cn)
+% For Lanzhou university beamer
+% 编译顺序
+% XeLateX->BibTeX->XeLateX->XeLateX
+%
+%                  ---by suchot
+%                  ---2018/9/20
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !TEX TS-program = Xelatex
+% !TEX encoding = UTF-8 Unicode
+\documentclass{beamer}
+\usepackage{latexsym,amssymb,amsmath,amsbsy,amsopn,amstext,xcolor,multicol,xeCJK}
+\usepackage{graphicx,wrapfig,fancybox,booktabs}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{beamerthemeLanzhouUnivsity}
+
+\usepackage[hyperref=true,backend=bibtex,sorting=none,backref=true]{biblatex}
+
+\addbibresource{database.bib}
+\setbeamertemplate{bibliography item}[text]
+
+
+\usepackage{algorithm} %%format of the algorithm
+\usepackage{algpseudocode}
+\algrenewcommand{\algorithmiccomment}[1]{ $//$ #1}
+\usepackage{listings}
+
+
+\setbeamerfont{footnote}{size=\tiny}  %设置页尾字体大小
+\renewcommand*{\bibfont}{\footnotesize}
+
+
+
+\begin{document}
+
+\title{Lanzhou university Beamer Theme}
+\subtitle{subtitle}
+\author{Hu Bin胡斌}
+\institute{Lanzhou University兰州大学}
+%\date{}
+
+\begin{frame}
+\titlepage
+\begin{figure}[htpb]
+  \begin{center}
+	\includegraphics[width=0.2\linewidth]{Lanzhou_University_Logo.pdf}
+  \end{center}
+\end{figure}
+\end{frame}
+
+%%多栏目录
+%\section*{Table Of Contents}
+%\begin{frame}
+%    \frametitle{\secname}
+%	\begin{multicols}{2}
+%    \tableofcontents
+%	\end{multicols}
+%\end{frame}
+
+%########
+%单栏目录
+%########
+\section*{Table Of Contents}
+\begin{frame}
+    \frametitle{\secname}
+  %  \tableofcontents
+	\tableofcontents[hideallsubsections]%隐藏subsection目录
+\end{frame}
+
+%########
+%在章节前添加Outline
+%########
+\AtBeginSubsection[] {
+\frame<handout:0> {
+\frametitle{Outline}
+\tableofcontents[current,currentsubsection]
+}
+}
+
+\section{Section I}
+\subsection{Subsection I}
+\begin{frame}
+\begin{block}{This is a block}
+Write something\cite{kocher99} in here \dots
+\end{block}
+\begin{alertblock}{This is a alertblock}
+Write \alert{something} in here \dots
+\end{alertblock}
+\end{frame}
+
+\subsection{Subsection II }
+\begin{frame}
+  %\frametitle{\subsecname~}
+	Just items:
+    \begin{itemize}[<+-| alert@+>]
+    \item
+   item a
+    \item 
+   item b
+    \item
+   item c
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  %\frametitle{\subsecname~}
+	Just items:
+    \begin{itemize}
+    \item
+   item a
+    \item 
+   item b
+    \item
+   item c
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    %\frametitle{\subsecname~Goods}
+	The enumarate item:
+    \begin{enumerate}[<+-| alert@+>]
+    \item
+	 Item start with number
+    \item
+     This is item 2
+  \end{enumerate}
+\end{frame}
+
+\section{section II}
+  
+\subsection{section I}
+\begin{frame}
+引用公式：eq.\ref{eq:sbm}
+\begin{equation}
+\hat{H}=\frac{\epsilon}{2}\hat{\sigma}_{z}-\frac{\Delta}{2}\hat{\sigma}_{x}+\sum_{k}\omega_{k}\hat{b}_{k}^{\dagger}\hat{b}_{k}+\sum_{k}\frac{g_{k}}{2}\hat{\sigma}_{z}(\hat{b}_{k}+\hat{b}_{k}^{\dagger})\label{eq:sbm}
+\end{equation}
+\end{frame}
+
+\begin{frame}{伪代码}
+
+\scalebox{0.5}{
+    \begin{minipage}{1.0\textwidth}
+           \begin{algorithm}[H]
+              \caption{Wrong algorithm}
+              \label{alg:algorithm}
+              \begin{algorithmic}[1]
+              \Require
+              Require 
+              \Ensure
+             Ensure
+              \Function {Tree}{$node_1, node_2$}
+                \If{$node_1.bv \cap node_2.bv = \emptyset$}
+                  \State \Return{\textbf{False}}
+				  \State \Call{Tree}{parameter}
+                  \Comment{Comment}
+                \Else
+                         \ForAll {$child \in node_1.children$}
+                         \State \Call{Tree}{$child, node_2$}  \Comment{递归调用}
+                         \EndFor
+                \EndIf
+              \EndFunction
+              \end{algorithmic}
+              \end{algorithm}
+\end{minipage}
+}
+\end{frame}
+
+
+\begin{frame}{表格}
+引用表格：tab.\ref{tab:Greek}
+\begin{table}[H]
+\begin{centering}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Alpha & Beta & Gamma & Delta & Theta\\
+\hline
+$\alpha$ & $\beta$ & $\gamma$ & $\delta$ & $\theta$\\
+\hline
+$A$ & $B$ & $\Gamma$ & $\Delta$ & $\Theta$\\
+\hline
+\end{tabular}
+\par\end{centering}
+\protect\caption{希腊字母表\label{tab:Greek}}
+\end{table}
+\end{frame}
+
+\begin{frame}{三线表}
+\begin{table}[htbp]
+ \caption{\label{tab:test}三线表}
+ \begin{tabular}{lcl}
+  \toprule
+  。。 & 。。 & 。。 \\
+  \midrule
+ 。。 & 。。 & 。。 \\
+ 。。 & 。。 & 。。 \\
+ 。。 & 。。 & 。。 \\
+ \bottomrule
+ \end{tabular}
+\end{table}
+\end{frame}
+
+
+\begin{frame}{页脚}
+  Description item:
+  \begin{description}%[<+-| alert@+>]
+  \item[description] Item starts with description.\footfullcite{kocher99}
+  \item[Fermion] This is item 2.\parencite{kocher99}
+  \end{description}
+\end{frame}
+\section{Section III}
+
+\subsection*{bibliography}
+    \frame[t,allowframebreaks]{
+     % \frametitle{\subsecname}
+    \printbibliography
+    }
+
+\subsection*{Q\&A}
+\begin{frame}
+  %\frametitle{\subsecname}
+\begin{center}
+    {\bf \Huge Q\&A?}\\
+\pause
+   {\bf \Huge Thank you!}
+\end{center}
+\end{frame}
+
+
+
+\end{document}
+
+
+%\begin{figure}
+%\includegraphics[height=10cm,width=12cm]{a3.eps}
+%\caption{}
+%\label{a3}
+%\end{figure}
